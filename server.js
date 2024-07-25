@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
+const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error");
 
 //Load env variables
@@ -24,6 +25,8 @@ const app = express();
 //Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
 
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
