@@ -34,18 +34,7 @@ exports.getCourse = asyncHandler(async (req, res, next) => {
 });
 
 exports.addCourse = asyncHandler(async (req, res, next) => {
-    // req.body.bootcamp = req.params.bootcampId;
-
-    // const bootcamp = await Bootcamp.findById(req.params.bootcampId);
-
-    // if (!bootcamp) {
-    //     return next(
-    //         new ErrorResponse(
-    //             `No bootcamp found with id ${req.params.bootcampId}`
-    //         ),
-    //         404
-    //     );
-    // }
+    req.body.user = req.user.id;
 
     const course = await Course.create(req.body);
 
